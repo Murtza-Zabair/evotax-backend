@@ -19,6 +19,12 @@ class ContactController extends Controller
         return view('admin.contact', compact('contacts'));
     }
 
+    public function messageIndex()
+    {
+        $messages = Message::latest()->paginate(15);
+        return view('admin.message', compact('messages'));
+    }
+    
     public function submit(Request $request)
     {
         Log::info('Contact form submission:', $request->all());
